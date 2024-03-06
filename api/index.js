@@ -24,4 +24,25 @@
 //     })
 // })
 
-const mongoose = require("mongoose");
+const express = require('express');
+const cors = require('cors');
+const app = express();
+app.use(express.json());
+
+const { development } = require('./config/config');
+const port = development.PORT;
+
+const mongooseConfige = require('./config/configMongoose');
+app.use(cors());
+mongooseConfige(app);
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}...`);
+});
+
+
+app.get('/api/todoapp/GetNotes', (request, response)=>{
+    database.collection('todoappcollection').find({}).toArray((error, result)=>{
+        response.send(result);
+    })
+})
