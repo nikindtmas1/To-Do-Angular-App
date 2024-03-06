@@ -36,13 +36,14 @@ const mongooseConfige = require('./config/configMongoose');
 app.use(cors());
 mongooseConfige(app);
 
+const Notes = require('./models/notesModel');
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}...`);
 });
 
 
-app.get('/api/todoapp/GetNotes', (request, response)=>{
-    database.collection('todoappcollection').find({}).toArray((error, result)=>{
-        response.send(result);
-    })
+app.get('/api/todoapp', async (request, response)=>{
+  const allNotes = await Notes.find();
+  return response.status(200).json(allNotes)
 })
