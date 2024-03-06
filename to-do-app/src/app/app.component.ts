@@ -13,5 +13,9 @@ export class AppComponent {
 
   constructor(private http:HttpClientModule){
 
-  }
+  };
+
+  notes:any=[];
+
+  
 }
