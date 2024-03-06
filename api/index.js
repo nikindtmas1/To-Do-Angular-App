@@ -24,4 +24,4 @@
 //     })
 // })
 
-const mongoos = require("mongoos");
+const mongoose = require("mongoose");
