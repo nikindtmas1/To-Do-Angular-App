@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppComponent {
   title = 'to-do-app';
 
+  readonly APIUrl="";// Added APIUrl when created
+
   constructor(private http:HttpClientModule){
 
   }
