@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,19 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppComponent {
   title = 'to-do-app';
 
-  readonly APIUrl="";// Added APIUrl when created
+  readonly APIUrl="http://localhost3000";// Added APIUrl when created
 
-  constructor(private http:HttpClientModule){
+  constructor(private http:HttpClient){
 
   };
 
   notes:any=[];
+
+  refreshNotes(){
+    this.http.get(this.APIUrl+"getNotes").subscribe((data: any)=>{
+      this.notes=data;
+    })
+  };
 
   
 }
