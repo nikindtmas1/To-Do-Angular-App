@@ -29,24 +29,23 @@ const cors = require('cors');
 const app = express();
 
 const mongooseConfige = require('./config/configMongoose');
-// const routes = require('./routes/routes');
+const routes = require('./routes/routes');
 const { development } = require('./config/config');
 const port = development.PORT;
 
 app.use(express.json());
 app.use(cors());
-// app.use(routes);
+app.use(routes);
 mongooseConfige(app);
 
-// const { Notes } = require('./models/notesModel');
-const services = require('./services/notesServices');
+// const services = require('./services/notesServices');
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}...`);
 });
 
 
-app.get('/todoappdbs/notes',  async (request, response)=>{
-    const allNotes = await services.getAllNotes();
-  response.status(200).json(allNotes)
-})
+// app.get('/todoappdbs/notes',  async (request, response)=>{
+//     const allNotes = await services.getAllNotes();
+//   response.status(200).json(allNotes)
+// })
