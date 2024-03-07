@@ -6,8 +6,7 @@ const connection = development.dbAtlas;
 
 module.exports = (app) => {
     async function main() {
-        await mongoose.connect(connection,
-        {
+        await mongoose.connect(connection,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
