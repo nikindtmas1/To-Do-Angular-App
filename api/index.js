@@ -38,14 +38,15 @@ app.use(cors());
 // app.use(routes);
 mongooseConfige(app);
 
-const { Notes } = require('./models/notesModel');
+// const { Notes } = require('./models/notesModel');
+const services = require('./services/notesServices');
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}...`);
 });
 
 
-app.get('/api/todoapp',  (request, response)=>{
-  const allNotes = Notes
+app.get('/todoappdbs/notes',  async (request, response)=>{
+    const allNotes = await services.getAllNotes();
   response.status(200).json(allNotes)
 })
