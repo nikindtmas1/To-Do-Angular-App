@@ -8,3 +8,5 @@ router.get('/', async (req, res) => {
 
     res.json(allNotes);
 });
+
+module.exports = router;
