@@ -29,9 +29,11 @@ export class AppComponent {
   addNotes(){
     const newNotes = (<HTMLInputElement>document.getElementById("description")).value;
     const formdata = new FormData();
+   
+    
+    const description = formdata.get('description');
     console.log(formdata);
     
-    formdata.append("description", newNotes);
     this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
       alert(data);
       this.refreshNotes();
