@@ -18,7 +18,7 @@ export class AppComponent {
   notes:any=[];
 
   refreshNotes(){
-    this.http.get(this.APIUrl+"getNotes").subscribe((data: any)=>{
+    this.http.get(this.APIUrl+"GetNotes").subscribe((data: any)=>{
       this.notes=data;
     })
   };
