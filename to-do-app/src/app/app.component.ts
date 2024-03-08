@@ -27,22 +27,20 @@ export class AppComponent {
   };
 
   addNotes(){
-    const newNotes = (<HTMLInputElement>document.getElementById("description")).value;
-    const formdata = new FormData();
+    const description = (<HTMLInputElement>document.getElementById("description")).value;
+    const formdata = {
+      "description": description
+    };
    
-    
-    const description = formdata.get('description');
-    console.log(formdata);
-    
     this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
       alert(data);
       this.refreshNotes();
     })
-  }
+  };
 
   deleteNotes(id:any){
   
-    this.http.delete(this.APIUrl+"notes"+id).subscribe(data => {
+    this.http.delete(this.APIUrl+"notes/"+id).subscribe(data => {
       alert(data);
       this.refreshNotes();
     })
