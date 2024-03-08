@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'to-do-app';
 
-  readonly APIUrl="http://localhost:5000/notes";// Added APIUrl when created
+  readonly APIUrl="http://localhost:5000/";// Added APIUrl when created
 
   constructor(private http:HttpClient){
 
@@ -18,7 +18,7 @@ export class AppComponent {
   notes:any=[];
 
   refreshNotes(){
-    this.http.get(this.APIUrl+"GetNotes").subscribe((data: any)=>{
+    this.http.get(this.APIUrl+"notes").subscribe((data)=>{
       this.notes=data;
     })
   };
