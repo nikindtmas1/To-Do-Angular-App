@@ -25,4 +25,24 @@ export class AppComponent {
   ngOnInit(){
     this.refreshNotes();
   };
+
+  addNotes(){
+    const newNotes = (<HTMLInputElement>document.getElementById("description")).value;
+    const formdata = new FormData();
+    console.log(formdata);
+    
+    formdata.append("description", newNotes);
+    this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
+      alert(data);
+      this.refreshNotes();
+    })
+  }
+
+  deleteNotes(id:any){
+  
+    this.http.delete(this.APIUrl+"notes"+id).subscribe(data => {
+      alert(data);
+      this.refreshNotes();
+    })
+  }
 }
