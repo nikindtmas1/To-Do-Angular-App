@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
     await services.createNotes({...req.body});
 
-    res.json({ ok : true });
+    res.json("Added Succesfully");
 });
 
 
@@ -29,7 +29,7 @@ router.delete('/:id', async (req, res) => {
 
     await services.removeNote(req.params.id);
 
-    res.json({ ok: true });
+    res.json("Dellete Succesfully");
 });
 
 module.exports = router;
