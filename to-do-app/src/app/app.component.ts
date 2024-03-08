@@ -9,8 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'to-do-app';
 
-  readonly APIUrl="http://localhost:5000/";// Added APIUrl when created
-
+  readonly APIUrl="http://localhost:5000/";
   constructor(private http:HttpClient){
 
   };
