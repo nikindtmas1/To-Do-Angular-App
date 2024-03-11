@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'to-do-app';
+  taskArray = [{ taskName: 'Brush teeth', isCompleted: false }];
 
   readonly APIUrl="http://localhost:5000/";
   constructor(private http:HttpClient){
@@ -44,5 +46,16 @@ export class AppComponent {
       alert(data);
       this.refreshNotes();
     })
+  };
+
+  onSubmit(form: NgForm) {
+    console.log(form);
+
+    this.taskArray.push({
+      taskName: form.controls['task'].value,
+      isCompleted: false
+    })
+
+    form.reset();
   }
 }
