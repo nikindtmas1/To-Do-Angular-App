@@ -17,27 +17,26 @@
                 <button id="submitButton" (click)="addNotes()">Submit</button>
               </div>
             </form>
-            <table>
+            <table class="table text-white mb-0">
               <thead id="label">
-                <tr>
+                <tr class="fw-normal">
                   <th scope="col">Tasks</th>
                   <th scope="col">Completed</th>
                   <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody>
-            
+                <tr *ngFor="let note of notes">
+                  <td>* {{note.description}} </td>
+                  <td><input id="myCheckbox" type="checkbox"></td>
+                  <td>
+                    <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
+                  </td>
+                  <td>
+                    <button id="editButton">Edit</button>
+                  </td>
+                </tr>
               </tbody>
-              <tr *ngFor="let note of notes">
-                <td>* {{note.description}} </td>
-                <td><input id="myCheckbox" type="checkbox"></td>
-                <td>
-                  <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
-                </td>
-                <td>
-                  <button id="editButton">Edit</button>
-                </td>
-              </tr>
             </table>
             <hr>
 
