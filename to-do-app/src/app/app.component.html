@@ -1,35 +1,51 @@
 <h1>Todo App</h1>
 <section  class="vh-100 gradient-custom-2">
-  <form>
-    <div class="form-group">
-      <label for="task">Task </label>
-      <input id="description" placeholder="Enter task">
-      <button id="submitButton" (click)="addNotes()">Submit</button>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+        <div class="card mask-custom">
+          <div class="card-body p-4 text-white">
+            <div class="text-center pt-3 pb-2">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                alt="Check" width="60">
+              <h2 class="my-4">Task List</h2>
+            </div>
+            <form>
+              <div class="form-group">
+                <!-- <label for="task">Task </label> -->
+                <input id="description" placeholder="Enter task">
+                <button id="submitButton" (click)="addNotes()">Submit</button>
+              </div>
+            </form>
+            <table>
+              <thead id="label">
+                <tr>
+                  <th scope="col">Tasks</th>
+                  <th scope="col">Completed</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+            
+              </tbody>
+              <tr *ngFor="let note of notes">
+                <td>* {{note.description}} </td>
+                <td><input id="myCheckbox" type="checkbox"></td>
+                <td>
+                  <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
+                </td>
+                <td>
+                  <button id="editButton">Edit</button>
+                </td>
+              </tr>
+            </table>
+            <hr>
+
+          </div>
+        </div>
+      </div>
     </div>
-  </form>
-  <table>
-    <thead id="label">
-      <tr>
-        <th scope="col">Task</th>
-        <th scope="col">Completed</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-  
-    </tbody>
-    <tr *ngFor="let note of notes">
-      <td>* {{note.description}} </td>
-      <td><input id="myCheckbox" type="checkbox"></td>
-      <td>
-        <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
-      </td>
-      <td>
-        <button id="editButton">Edit</button>
-      </td>
-    </tr>
-  </table>
-  <hr>
+  </div>
 </section>
 
 <!-- <section class="vh-100" style="background-color: #e2d5de;">
