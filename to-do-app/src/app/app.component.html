@@ -1,11 +1,27 @@
 <h1>Todo App</h1>
 <label for="task">Task</label>
-<input id="description">
+<input id="description" placeholder="Enter task">
 <button (click)="addNotes()">Submit</button>
-<h3 *ngFor="let note of notes">
-  <b>* {{note.description}} </b>
-  <button (click)="deleteNotes(note._id)">Delete</button>
-</h3>
+<table>
+  <thead>
+    <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+  <tr *ngFor="let note of notes">
+    <td>* {{note.description}} </td>
+    <td><input  id="myCheckbox" type="checkbox"></td>
+    <td>
+      <button (click)="deleteNotes(note._id)">Delete</button>
+    </td>
+  </tr>
+
+</table>
 
 <hr>
 <form >
