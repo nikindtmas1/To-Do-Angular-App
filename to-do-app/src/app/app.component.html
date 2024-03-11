@@ -1,34 +1,36 @@
 <h1>Todo App</h1>
-<form>
-  <div class="form-group">
-    <label for="task">Task </label>
-    <input id="description" placeholder="Enter task">
-    <button id="submitButton" (click)="addNotes()">Submit</button>
-  </div>
-</form>
-<table>
-  <thead id="label">
-    <tr>
-      <th scope="col">Task</th>
-      <th scope="col">Completed</th>
-      <th scope="col">Delete</th>
+<section  class="vh-100 gradient-custom-2">
+  <form>
+    <div class="form-group">
+      <label for="task">Task </label>
+      <input id="description" placeholder="Enter task">
+      <button id="submitButton" (click)="addNotes()">Submit</button>
+    </div>
+  </form>
+  <table>
+    <thead id="label">
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+  
+    </tbody>
+    <tr *ngFor="let note of notes">
+      <td>* {{note.description}} </td>
+      <td><input id="myCheckbox" type="checkbox"></td>
+      <td>
+        <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
+      </td>
+      <td>
+        <button id="editButton">Edit</button>
+      </td>
     </tr>
-  </thead>
-  <tbody>
-
-  </tbody>
-  <tr *ngFor="let note of notes">
-    <td>* {{note.description}} </td>
-    <td><input id="myCheckbox" type="checkbox"></td>
-    <td>
-      <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
-    </td>
-    <td>
-      <button id="editButton">Edit</button>
-    </td>
-  </tr>
-</table>
-<hr>
+  </table>
+  <hr>
+</section>
 
 <!-- <section class="vh-100" style="background-color: #e2d5de;">
   <div class="container py-5 h-100">
