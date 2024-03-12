@@ -48,6 +48,13 @@ export class AppComponent {
     })
   };
 
+  editNotes(id: any) {
+    this.http.get(this.APIUrl+"notes/"+id).subscribe(data => {
+      console.log(data);
+      
+    });
+  }
+
   onSubmit(form: NgForm) {
     console.log(form);
 
