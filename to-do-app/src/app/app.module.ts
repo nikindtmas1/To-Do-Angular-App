@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatInputModule,
     MatDialogModule,
+    MatFormFieldModule,
   ],
   providers: [
     provideAnimationsAsync()
