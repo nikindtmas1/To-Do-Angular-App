@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatDialogModule,
   ],
   providers: [
     provideAnimationsAsync()
