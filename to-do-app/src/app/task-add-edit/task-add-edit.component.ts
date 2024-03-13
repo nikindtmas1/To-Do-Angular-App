@@ -15,4 +15,11 @@ export class TaskAddEditComponent {
       description: "description"
     })
   }
+
+  onFormSubmit(){
+    if(this.taskForm.value){
+      console.log(this.taskForm.value);
+      
+    }
+  }
 }
