@@ -1,9 +1,10 @@
 <!-- <h1>Todo App</h1> -->
 <p>
-  <mat-toolbar>
+  <mat-toolbar color="primary">
     <span>My App</span>
     <span class="example-spacer"></span>
-    <button id="submitButton" (click)="addNotes()">Submit</button>
+    <input id="description" placeholder="Enter task">
+    <button mat-raised-button  id="submitButton" (click)="addNotes()">Submit</button>
   </mat-toolbar>
 </p>
 <section  class="vh-100 gradient-custom-2">
