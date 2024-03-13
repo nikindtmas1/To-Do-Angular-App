@@ -49,10 +49,14 @@ export class AppComponent {
   };
 
   editNotes(id: any) {
-    this.http.get(this.APIUrl+"notes/"+id).subscribe(data => {
-      console.log(data);
-      
-    });
+  this.http.get(this.APIUrl+"notes/"+id).subscribe(data => {
+    console.log(data);
+    const element = <HTMLInputElement>document.getElementById("description")
+  
+    element.textContent = "New"
+  });
+  
+    
   }
 
   onSubmit(form: NgForm) {
