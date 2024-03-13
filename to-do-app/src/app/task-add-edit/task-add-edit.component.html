@@ -1,17 +1,17 @@
 <div mat-dialog-title>
     <h1>Task Form</h1>
 </div>
-<form action="">
+<form action="" [formGroup]="taskForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
         <div class="row">
             <mat-form-field >
                 <mat-label>Input</mat-label>
-                <input matInput type="text" placeholder="Enter Task">
+                <input matInput type="text" placeholder="Enter Task" formControlName="description">
               </mat-form-field>
         </div>
     </div>
     <div mat-dialog-actions class="action">
         <button mat-raised-button>Cencel</button>
-        <button mat-raised-button color="primary">Save</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
     </div>
 </form>
