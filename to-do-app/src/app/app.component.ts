@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,13 @@ export class AppComponent {
   taskArray = [{ taskName: 'Brush teeth', isCompleted: false }];
 
   readonly APIUrl="http://localhost:5000/";
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient, private _dialog: MatDialog){
 
   };
+
+  openAddEditTaskForm(){
+    this._dialog.open(TaskAddEditComponent)
+  }
 
   notes:any=[];
 
