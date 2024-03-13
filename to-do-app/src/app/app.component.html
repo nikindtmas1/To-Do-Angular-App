@@ -35,7 +35,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let note of notes">
-                  <td class="align-middle" style="background-color: aliceblue; border-radius: 2px; padding-right: 5px;">* {{note.description}} </td>
+                  <td  style="background-color: aliceblue; border-radius: 2px; padding-right: 5px; margin-left: 20px;">* {{note.description}} </td>
                   <td><input id="myCheckbox" type="checkbox"></td>
                   <td>
                     <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
