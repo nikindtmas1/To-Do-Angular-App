@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-task-add-edit',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class TaskAddEditComponent {
 
+  taskForm:FormGroup
+
+  constructor(private _fb: FormBuilder){
+    this.taskForm = _fb.group({
+      description: "description"
+    })
+  }
 }
