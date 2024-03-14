@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
 import { TaskServiceService } from './services/task-service.service';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +16,13 @@ import { TaskServiceService } from './services/task-service.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'to-do-app';
-  taskArray = [{ taskName: 'Brush teeth', isCompleted: false }];
+ 
+
+  displayedColumns: string[] = ['description'];
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   readonly APIUrl="http://localhost:5000/";
   constructor(
@@ -28,13 +38,25 @@ export class AppComponent implements OnInit {
   getTasks(){
     this._taskService.getAllTasks().subscribe({
       next: (res) => {
-        console.log(res);
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       },
       error: (err: any) => {
         console.error(err)
       }
     });
+
   };
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   notes:any=[];
 
