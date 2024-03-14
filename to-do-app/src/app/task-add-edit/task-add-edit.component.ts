@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskServiceService } from '../services/task-service.service';
+import { DialogRef } from '@angular/cdk/dialog';
 // import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,7 +13,11 @@ export class TaskAddEditComponent {
   // readonly APIUrl="http://localhost:5000/";
   taskForm:FormGroup
 
-  constructor(private _fb: FormBuilder, private _taskService: TaskServiceService){
+  constructor(
+    private _fb: FormBuilder, 
+    private _taskService: TaskServiceService,
+    private _dialogRef: DialogRef<TaskAddEditComponent>
+    ){
     this.taskForm = this._fb.group({
       description: ""
     })
@@ -34,7 +39,10 @@ export class TaskAddEditComponent {
     if(this.taskForm.valid){
       const formdata = this.taskForm.value
       this._taskService.addedTask(formdata).subscribe({
-        next: (val: any) => {},
+        next: (val: any) => {
+          alert("Task added successfully");
+          this._dialogRef.close();
+        },
         error: (err: any) => {
           console.error(err);
         },
