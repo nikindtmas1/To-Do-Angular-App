@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,7 +10,7 @@ import { TaskServiceService } from './services/task-service.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'to-do-app';
   taskArray = [{ taskName: 'Brush teeth', isCompleted: false }];
 
@@ -44,8 +44,8 @@ export class AppComponent {
     })
   };
 
-  ngOnInit(){
-    this.refreshNotes();
+  ngOnInit(): void{
+    this.getTasks();
   };
 
   addNotes(){
