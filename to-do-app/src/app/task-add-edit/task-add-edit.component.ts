@@ -13,7 +13,7 @@ export class TaskAddEditComponent {
 
   constructor(private _fb: FormBuilder, private http:HttpClient){
     this.taskForm = _fb.group({
-      description: "description"
+      description: ""
     })
   }
 
