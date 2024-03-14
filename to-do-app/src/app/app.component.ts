@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
+import { TaskServiceService } from './services/task-service.service';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,26 @@ export class AppComponent {
   taskArray = [{ taskName: 'Brush teeth', isCompleted: false }];
 
   readonly APIUrl="http://localhost:5000/";
-  constructor(private http:HttpClient, private _dialog: MatDialog){
-
-  };
+  constructor(
+    private http:HttpClient, 
+    private _dialog: MatDialog,
+    private _taskService: TaskServiceService,
+    ){};
 
   openAddEditTaskForm(){
     this._dialog.open(TaskAddEditComponent)
-  }
+  };
+
+  getTasks(){
+    this._taskService.getAllTasks().subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err: any) => {
+        console.error(err)
+      }
+    });
+  };
 
   notes:any=[];
 
@@ -65,14 +79,14 @@ export class AppComponent {
     
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form);
+  // onSubmit(form: NgForm) {
+  //   console.log(form);
 
-    this.taskArray.push({
-      taskName: form.controls['task'].value,
-      isCompleted: false
-    })
+  //   this.taskArray.push({
+  //     taskName: form.controls['task'].value,
+  //     isCompleted: false
+  //   })
 
-    form.reset();
-  }
+  //   form.reset();
+  // }
 }
