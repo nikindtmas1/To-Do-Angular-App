@@ -30,7 +30,7 @@ export class TaskAddEditComponent {
   };
 
   onFormSubmit(){
-    if(this.taskForm.value){
+    if(this.taskForm.valid){
       const formdata = this.taskForm.value
       
       console.log(formdata);
