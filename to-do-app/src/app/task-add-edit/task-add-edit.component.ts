@@ -33,7 +33,7 @@ export class TaskAddEditComponent {
   onFormSubmit(){
     if(this.taskForm.valid){
       const formdata = this.taskForm.value
-      
+      this._taskService.addedTask(formdata)
       console.log(formdata);
       // this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
       //   alert(data);
