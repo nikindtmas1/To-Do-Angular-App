@@ -13,5 +13,9 @@ export class TaskServiceService {
 
   addedTask(data: any): Observable<any>{
    return this._http.post(this.APIUrl+'notes', data);
-  }
+  };
+
+  getAllTasks(): Observable<any>{
+    return this._http.get(this.APIUrl+'notes');
+   };
 }
