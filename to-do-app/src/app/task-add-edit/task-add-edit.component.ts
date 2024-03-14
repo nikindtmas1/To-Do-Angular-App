@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { TaskServiceService } from '../services/task-service.service';
+// import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-task-add-edit',
@@ -8,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './task-add-edit.component.css'
 })
 export class TaskAddEditComponent {
-  readonly APIUrl="http://localhost:5000/";
+  // readonly APIUrl="http://localhost:5000/";
   taskForm:FormGroup
 
-  constructor(private _fb: FormBuilder, private http:HttpClient){
+  constructor(private _fb: FormBuilder, private _taskService: TaskServiceService){
     this.taskForm = this._fb.group({
       description: ""
     })
@@ -19,25 +20,25 @@ export class TaskAddEditComponent {
 
   notes:any=[];
 
-  refreshNotes(){
-    this.http.get(this.APIUrl+"notes").subscribe((data)=>{
-      this.notes=data;
-    })
-  };
+  // refreshNotes(){
+  //   this.http.get(this.APIUrl+"notes").subscribe((data)=>{
+  //     this.notes=data;
+  //   })
+  // };
 
-  ngOnInit(){
-    this.refreshNotes();
-  };
+  // ngOnInit(){
+  //   this.refreshNotes();
+  // };
 
   onFormSubmit(){
     if(this.taskForm.valid){
       const formdata = this.taskForm.value
       
       console.log(formdata);
-      this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
-        alert(data);
-        this.refreshNotes();
-      })
+      // this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
+      //   alert(data);
+      //   this.refreshNotes();
+      // })
     }
   }
 }
