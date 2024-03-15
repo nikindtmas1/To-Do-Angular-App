@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
 import { TaskServiceService } from './services/task-service.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -32,7 +32,14 @@ export class AppComponent implements OnInit {
     ){};
 
   openAddEditTaskForm(){
-    this._dialog.open(TaskAddEditComponent)
+   const dialogRef = this._dialog.open(TaskAddEditComponent);
+   dialogRef.afterClosed().subscribe({
+    next: (val) => {
+      if(val){
+        this.getTasks()
+      }
+    }
+   })
   };
 
   getTasks(){
@@ -56,6 +63,18 @@ export class AppComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  };
+
+  deleteNotes(id: any){
+    this._taskService.deleteTask(id).subscribe({
+      next: (res) => {
+        alert('Task deleted!');
+        this.getTasks()
+      },
+      error: (err: any) => {
+        console.error(err)
+      }
+    })
   }
 
   notes:any=[];
@@ -70,36 +89,36 @@ export class AppComponent implements OnInit {
     this.getTasks();
   };
 
-  addNotes(){
-    const description = (<HTMLInputElement>document.getElementById("description")).value;
-    const formdata = {
-      "description": description
-    };
+  // addNotes(){
+  //   const description = (<HTMLInputElement>document.getElementById("description")).value;
+  //   const formdata = {
+  //     "description": description
+  //   };
    
-    this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
-      alert(data);
-      this.refreshNotes();
-    })
-  };
+  //   this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
+  //     alert(data);
+  //     this.refreshNotes();
+  //   })
+  // };
 
-  deleteNotes(id:any){
+  // deleteNotes(id:any){
   
-    this.http.delete(this.APIUrl+"notes/"+id).subscribe(data => {
-      alert(data);
-      this.refreshNotes();
-    })
-  };
+  //   this.http.delete(this.APIUrl+"notes/"+id).subscribe(data => {
+  //     alert(data);
+  //     this.refreshNotes();
+  //   })
+  // };
 
-  editNotes(id: any) {
-  this.http.get(this.APIUrl+"notes/"+id).subscribe(data => {
-    console.log(data);
-    const element = <HTMLInputElement>document.getElementById("description")
+  // editNotes(id: any) {
+  // this.http.get(this.APIUrl+"notes/"+id).subscribe(data => {
+  //   console.log(data);
+  //   const element = <HTMLInputElement>document.getElementById("description")
   
-    element.textContent = "New"
-  });
+  //   element.textContent = "New"
+  // });
   
     
-  }
+  // }
 
   // onSubmit(form: NgForm) {
   //   console.log(form);
