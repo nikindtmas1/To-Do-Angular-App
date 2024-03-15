@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskServiceService } from '../services/task-service.service';
 import { DialogRef } from '@angular/cdk/dialog';
 import { HttpClient } from '@angular/common/http';
+import { MatDialogRef } from '@angular/material/dialog';
 // import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -17,7 +18,7 @@ export class TaskAddEditComponent {
   constructor(
     private _fb: FormBuilder, 
     private _taskService: TaskServiceService,
-    private _dialogRef: DialogRef<TaskAddEditComponent>,
+    private _dialogRef: MatDialogRef<TaskAddEditComponent>,
     private _http: HttpClient,
     ){
     this.taskForm = this._fb.group({
@@ -43,7 +44,7 @@ export class TaskAddEditComponent {
       this._taskService.addedTask(formdata).subscribe({
         next: (val: any) => {
           alert("Task added successfully");
-          this._dialogRef.close();
+          this._dialogRef.close(true);
           this.refreshNotes();
         },
         error: (err: any) => {
