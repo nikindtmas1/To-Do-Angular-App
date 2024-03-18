@@ -100,10 +100,10 @@ export class AppComponent implements OnInit {
     this.getTasks();
   };
 
-  onCheck(id: any) {
+  // onCheck(id: any) {
     
-    console.log(id);
+  //   console.log(id);
     
-    // this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
-  }
+  //   this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
+  // }
 }
