@@ -1,9 +1,7 @@
-<!-- <h1>Todo App</h1> -->
 
   <mat-toolbar color="primary">
     <span>My Task List</span>
     <span class="example-spacer"></span>
-    <!-- <input id="description" placeholder="Enter task"> -->
     <button mat-raised-button  id="submitButton" (click)="openAddEditTaskForm()">Submit</button>
   </mat-toolbar>
 
@@ -31,6 +29,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Completed </th>
         <td mat-cell *matCellDef="let row"> 
           <input type="checkbox">
+          
          </td>
       </ng-container>
       <!-- Progress Column -->
