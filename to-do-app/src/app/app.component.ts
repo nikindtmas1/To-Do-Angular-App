@@ -77,8 +77,10 @@ export class AppComponent implements OnInit {
     })
   }
 
-  openEditForm(){
-    this._dialog.open(TaskAddEditComponent);
+  openEditForm(data: any){
+    this._dialog.open(TaskAddEditComponent, {
+      data: data
+    });
   
    };
 
