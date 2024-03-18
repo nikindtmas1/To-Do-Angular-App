@@ -14,7 +14,6 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
- 
 
   displayedColumns: string[] = ['id','description','checkbox','action'];
   dataSource!: MatTableDataSource<any>;
@@ -101,4 +100,10 @@ export class AppComponent implements OnInit {
     this.getTasks();
   };
 
+  onCheck(id: any) {
+    
+    console.log(id);
+    
+    // this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
+  }
 }
