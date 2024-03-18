@@ -28,7 +28,7 @@
       <ng-container matColumnDef="checkbox">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Completed </th>
         <td mat-cell *matCellDef="let row"> 
-          <input (change)="onCheck(row._id)" type="checkbox">
+          <input  type="checkbox">
          </td>
       </ng-container>
       <!-- Progress Column -->
@@ -70,51 +70,3 @@
 
 </div>
 
-
-<!-- <section  class="vh-100 gradient-custom-2">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-12 col-xl-10">
-        <div class="card mask-custom">
-          <div class="card-body p-4 text-white">
-            <div class="text-center pt-3 pb-2">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
-                alt="Check" width="60">
-              <h2 class="my-4">Task List</h2>
-            </div>
-            <form>
-              <div class="form-group">
-                <label for="task">Task </label>
-                <input id="description" placeholder="Enter task">
-                <button id="submitButton" (click)="addNotes()">Submit</button>
-              </div>
-            </form>
-            <table class="table text-white mb-0">
-              <thead id="label">
-                <tr class="fw-normal">
-                  <th class="align-middle">Tasks</th>
-                  <th class="align-middle">Completed</th>
-                  <th class="align-middle">Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let note of notes">
-                  <td  style="background-color: aliceblue; border-radius: 2px; padding-right: 5px; margin-left: 20px;">* {{note.description}} </td>
-                  <td><input id="myCheckbox" type="checkbox"></td>
-                  <td>
-                    <button id="deleteButton"  (click)="deleteNotes(note._id)">Delete</button>
-                  </td>
-                  <td>
-                    <button id="editButton" (click)="editNotes(note._id)">Edit</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <hr>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
