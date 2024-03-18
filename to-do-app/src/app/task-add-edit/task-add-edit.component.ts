@@ -19,7 +19,7 @@ export class TaskAddEditComponent implements OnInit {
     private _taskService: TaskServiceService,
     private _dialogRef: MatDialogRef<TaskAddEditComponent>,
     private _http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) private data: any
+    @Inject(MAT_DIALOG_DATA) public data: any
     ){
     this.taskForm = this._fb.group({
       description: ""
