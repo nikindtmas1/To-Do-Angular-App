@@ -21,15 +21,20 @@ router.post('/', async (req, res) => {
 
     await services.createNotes({...req.body});
 
-    res.json("Added Succesfully");
+    res.json("Added Successfully");
 });
 
+router.put('/:id', async (req, res) => {
+    await services.updateNote(req.params.id, {...req.body});
+
+    res.json('Update Successfully')
+})
 
 router.delete('/:id', async (req, res) => {
 
     await services.removeNote(req.params.id);
 
-    res.json("Dellete Succesfully");
+    res.json("Dellete Successfully");
 });
 
 module.exports = router;
