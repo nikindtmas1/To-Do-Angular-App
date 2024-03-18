@@ -38,6 +38,12 @@ export class TaskAddEditComponent implements OnInit {
     this.taskForm.patchValue(this.data);
   };
 
+  onCheck(id: any) {
+    
+    console.log(id);
+    
+    // this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
+  }
   onFormSubmit(){
     if(this.taskForm.valid){
       if(this.data){
