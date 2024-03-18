@@ -77,6 +77,11 @@ export class AppComponent implements OnInit {
     })
   }
 
+  openEditForm(){
+    this._dialog.open(TaskAddEditComponent);
+  
+   };
+
   notes:any=[];
 
   refreshNotes(){
