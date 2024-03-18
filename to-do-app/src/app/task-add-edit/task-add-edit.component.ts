@@ -40,17 +40,33 @@ export class TaskAddEditComponent implements OnInit {
 
   onFormSubmit(){
     if(this.taskForm.valid){
-      const formdata = this.taskForm.value
-      this._taskService.addedTask(formdata).subscribe({
-        next: (val: any) => {
-          alert("Task added successfully");
-          this._dialogRef.close(true);
-          this.refreshNotes();
-        },
-        error: (err: any) => {
-          console.error(err);
-        },
-      })
+      if(this.data){
+
+        const formdata = this.taskForm.value
+        this._taskService.editTask(this.data._id, formdata).subscribe({
+          next: (val: any) => {
+            alert("Task detail updated!");
+            this._dialogRef.close(true);
+            this.refreshNotes();
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        })
+      }else{
+
+        const formdata = this.taskForm.value
+        this._taskService.addedTask(formdata).subscribe({
+          next: (val: any) => {
+            alert("Task added successfully");
+            this._dialogRef.close(true);
+            this.refreshNotes();
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        })
+      }
       
       // this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
       //   alert(data);
