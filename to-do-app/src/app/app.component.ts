@@ -12,7 +12,6 @@ import {MatTableDataSource} from '@angular/material/table';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
- 
 })
 export class AppComponent implements OnInit {
  
@@ -102,45 +101,4 @@ export class AppComponent implements OnInit {
     this.getTasks();
   };
 
-  // addNotes(){
-  //   const description = (<HTMLInputElement>document.getElementById("description")).value;
-  //   const formdata = {
-  //     "description": description
-  //   };
-   
-  //   this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
-  //     alert(data);
-  //     this.refreshNotes();
-  //   })
-  // };
-
-  // deleteNotes(id:any){
-  
-  //   this.http.delete(this.APIUrl+"notes/"+id).subscribe(data => {
-  //     alert(data);
-  //     this.refreshNotes();
-  //   })
-  // };
-
-  // editNotes(id: any) {
-  // this.http.get(this.APIUrl+"notes/"+id).subscribe(data => {
-  //   console.log(data);
-  //   const element = <HTMLInputElement>document.getElementById("description")
-  
-  //   element.textContent = "New"
-  // });
-  
-    
-  // }
-
-  // onSubmit(form: NgForm) {
-  //   console.log(form);
-
-  //   this.taskArray.push({
-  //     taskName: form.controls['task'].value,
-  //     isCompleted: false
-  //   })
-
-  //   form.reset();
-  // }
 }
