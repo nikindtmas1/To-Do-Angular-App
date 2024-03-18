@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskServiceService } from '../services/task-service.service';
 import { HttpClient } from '@angular/common/http';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 // import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,7 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './task-add-edit.component.html',
   styleUrl: './task-add-edit.component.css'
 })
-export class TaskAddEditComponent {
+export class TaskAddEditComponent implements OnInit {
   readonly APIUrl="http://localhost:5000/";
   taskForm:FormGroup
 
@@ -19,6 +19,7 @@ export class TaskAddEditComponent {
     private _taskService: TaskServiceService,
     private _dialogRef: MatDialogRef<TaskAddEditComponent>,
     private _http: HttpClient,
+    @Inject(MAT_DIALOG_DATA) private data: any
     ){
     this.taskForm = this._fb.group({
       description: ""
@@ -34,7 +35,7 @@ export class TaskAddEditComponent {
   };
 
   ngOnInit(){
-    this.refreshNotes();
+    this.taskForm.patchValue(this.data);
   };
 
   onFormSubmit(){
