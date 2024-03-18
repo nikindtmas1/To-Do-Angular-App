@@ -78,10 +78,17 @@ export class AppComponent implements OnInit {
   }
 
   openEditForm(data: any){
-    this._dialog.open(TaskAddEditComponent, {
+   const dialogRef = this._dialog.open(TaskAddEditComponent, {
       data: data
     });
   
+    dialogRef.afterClosed().subscribe({
+     next: (val) => {
+       if(val){
+         this.getTasks()
+       }
+     }
+    })
    };
 
   notes:any=[];
