@@ -39,8 +39,10 @@ export class TaskAddEditComponent implements OnInit {
   };
 
   onCheck(id: any) {
-    
-    console.log();
+    this._taskService.getTaskById(id).subscribe((data) => {
+      console.log(data);
+
+    })
     // this.isChecked = true;
     // this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
   }
