@@ -40,10 +40,18 @@ export class TaskAddEditComponent implements OnInit {
 
   onCheck(id: any) {
     
-    console.log(id);
-    
+    console.log();
+    // this.isChecked = true;
     // this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
   }
+
+  isChecked: boolean = false;
+
+  checkValue(event: any){
+    console.log(event);
+  }
+  
+
   onFormSubmit(){
     if(this.taskForm.valid){
       if(this.data){
