@@ -12,7 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import { TaskAddEditComponent } from './task-add-edit/task-add-edit.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -36,7 +36,8 @@ import { MatSortModule } from '@angular/material/sort';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()
