@@ -56,59 +56,39 @@ export class TaskAddEditComponent implements OnInit {
 
   onFormSubmit(){
 
-    const formdata = this.taskForm.value
-    console.log(formdata.description);
-    
-    this._taskService.addedTask(formdata).subscribe({
-      next: () => {
-        alert("Successfully")
+    if(this.taskForm.valid){
+      if(this.data){
+
+        const formdata = this.taskForm.value
+        this._taskService.editTask(this.data._id, formdata).subscribe({
+          next: (val: any) => {
+            alert("Task detail updated!");
+            this._dialogRef.close(true);
+            this.refreshNotes();
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        })
+      }else{
+
+        const formdata = this.taskForm.value
+        this._taskService.addedTask(formdata).subscribe({
+          next: (val: any) => {
+            alert("Task added successfully");
+            this._dialogRef.close(true);
+            this.refreshNotes();
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        })
       }
-    })
-    
-    // this._taskService.addedTask(formdata).subscribe({
-    //   next: (val: any) => {
-    //     alert("Task added successfully");
-    //     this._dialogRef.close(true);
-    //     this.refreshNotes();
-    //   },
-    //   error: (err: any) => {
-    //     console.error(err);
-    //   },
-    // })
-
-    // if(this.taskForm.valid){
-    //   if(this.data){
-
-    //     const formdata = this.taskForm.value
-    //     this._taskService.editTask(this.data._id, formdata).subscribe({
-    //       next: (val: any) => {
-    //         alert("Task detail updated!");
-    //         this._dialogRef.close(true);
-    //         this.refreshNotes();
-    //       },
-    //       error: (err: any) => {
-    //         console.error(err);
-    //       },
-    //     })
-    //   }else{
-
-    //     const formdata = this.taskForm.value
-    //     this._taskService.addedTask(formdata).subscribe({
-    //       next: (val: any) => {
-    //         alert("Task added successfully");
-    //         this._dialogRef.close(true);
-    //         this.refreshNotes();
-    //       },
-    //       error: (err: any) => {
-    //         console.error(err);
-    //       },
-    //     })
-    //   }
       
-    //   // this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
-    //   //   alert(data);
-    //   //   this.refreshNotes();
-    //   // })
-    // }
+      // this.http.post(this.APIUrl+"notes", formdata).subscribe(data => {
+      //   alert(data);
+      //   this.refreshNotes();
+      // })
+    }
   }
 }
