@@ -14,7 +14,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-
+  isChecked: boolean = false;
   displayedColumns: string[] = ['id','description','checkbox','action'];
   dataSource!: MatTableDataSource<any>;
 
@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
     ){};
 
   openAddEditTaskForm(){
+
    const dialogRef = this._dialog.open(TaskAddEditComponent);
    dialogRef.afterClosed().subscribe({
     next: (val) => {
@@ -100,4 +101,5 @@ export class AppComponent implements OnInit {
     this.getTasks();
   };
 
+  
 }
