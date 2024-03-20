@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
     private _taskService: TaskServiceService,
     ){};
 
+    checkValue(event: any){
+      this.isChecked = event.target.value
+    }
   openAddEditTaskForm(){
 
    const dialogRef = this._dialog.open(TaskAddEditComponent);
