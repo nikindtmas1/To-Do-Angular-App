@@ -1,6 +1,7 @@
 <div mat-dialog-title>
     <h1>Task Form</h1>
 </div>
+<input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked ? 'A' : 'B')" />
 <form [formGroup]="taskForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
         <div class="row">
@@ -8,8 +9,6 @@
                 <mat-label>Input</mat-label>
                 <input matInput type="text" placeholder="Enter Task" formControlName="description">
             </mat-form-field>
-            <input (change)="onCheck(data._id)" (change)="checkValue(isChecked?'A':'B')" type="checkbox">
-            <!-- <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked?'A':'B')"> -->
         </div>
     </div>
     <div mat-dialog-actions class="action">
