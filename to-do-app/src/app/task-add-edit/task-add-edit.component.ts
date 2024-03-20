@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TaskServiceService } from '../services/task-service.service';
 import { HttpClient } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-// import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-task-add-edit',
@@ -40,7 +39,7 @@ export class TaskAddEditComponent implements OnInit {
 
   onCheck(id: any) {
     this._taskService.getTaskById(id).subscribe((data) => {
-      console.log(data);
+      console.log(data.checkBox);
 
     })
     // this.isChecked = true;
