@@ -10,6 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrl: './task-add-edit.component.css'
 })
 export class TaskAddEditComponent implements OnInit {
+  isChecked = false;
   readonly APIUrl="http://localhost:5000/";
   taskForm:FormGroup
 
@@ -21,7 +22,8 @@ export class TaskAddEditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
     ){
     this.taskForm = this._fb.group({
-      description: ""
+      description: "",
+      checkBox: this.isChecked
     })
   }
 
@@ -46,7 +48,7 @@ export class TaskAddEditComponent implements OnInit {
     // this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
   }
 
-  isChecked: boolean = false;
+  
 
   checkValue(event: any){
     console.log(event);
@@ -59,6 +61,7 @@ export class TaskAddEditComponent implements OnInit {
       if(this.data){
 
         const formdata = this.taskForm.value
+         
         this._taskService.editTask(this.data._id, formdata).subscribe({
           next: (val: any) => {
             alert("Task detail updated!");
