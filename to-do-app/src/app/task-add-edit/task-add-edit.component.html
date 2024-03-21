@@ -1,8 +1,8 @@
 <div mat-dialog-title>
     <h1>Task Form</h1>
 </div>
-<input type="checkbox" [(ngModel)]="isChecked" />
-<!-- <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked ? 'A' : 'B')" /> -->
+<!-- <input type="checkbox" [(ngModel)]="isChecked" /> -->
+<input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked ? 'A' : 'B')" />
 <form [formGroup]="taskForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
         <div class="row">
