@@ -23,7 +23,6 @@ export class TaskAddEditComponent implements OnInit {
     ){
     this.taskForm = this._fb.group({
       description: "",
-      checkBox: this.isChecked
     })
   }
 
@@ -71,7 +70,7 @@ export class TaskAddEditComponent implements OnInit {
 
     if(this.taskForm.valid){
       if(this.data){
-
+        
         const description = this.taskForm.value.description;
         const check = this.isChecked
         const formdata = {
