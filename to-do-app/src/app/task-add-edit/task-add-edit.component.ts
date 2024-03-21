@@ -52,6 +52,16 @@ export class TaskAddEditComponent implements OnInit {
 
   checkValue(event: any){
     console.log(event);
+    if(event === 'A'){
+      this.isChecked = true;
+      console.log(this.isChecked);
+      
+    }else{
+      this.isChecked = false
+      console.log(this.isChecked);
+      
+    }
+
   }
   
 
@@ -59,8 +69,13 @@ export class TaskAddEditComponent implements OnInit {
 
     if(this.taskForm.valid){
       if(this.data){
-
-        const formdata = this.taskForm.value
+        
+        const description = this.taskForm.value.description;
+        const check = this.isChecked
+        const formdata = {
+          description,
+          checkBox : check
+        }
          
         this._taskService.editTask(this.data._id, formdata).subscribe({
           next: (val: any) => {
