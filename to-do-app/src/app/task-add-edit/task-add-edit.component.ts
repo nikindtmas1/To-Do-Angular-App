@@ -28,6 +28,7 @@ export class TaskAddEditComponent implements OnInit {
   }
 
   notes:any=[];
+  tasks: any =[];
 
   refreshNotes(){
     this._taskService.getAllTasks().subscribe((data)=>{
@@ -41,8 +42,9 @@ export class TaskAddEditComponent implements OnInit {
 
   onCheck(id: any) {
     this._taskService.getTaskById(id).subscribe((data) => {
+      // this.isChecked = data.checkBox
       console.log(data.checkBox);
-
+      
     })
     // this.isChecked = true;
     // this.taskArray[index].isCompleted = !this.taskArray[index].isCompleted;
@@ -69,7 +71,7 @@ export class TaskAddEditComponent implements OnInit {
 
     if(this.taskForm.valid){
       if(this.data){
-        
+
         const description = this.taskForm.value.description;
         const check = this.isChecked
         const formdata = {
