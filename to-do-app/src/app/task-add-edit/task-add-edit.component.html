@@ -3,7 +3,7 @@
 </div>
 <!-- <input type="checkbox" [(ngModel)]="isChecked" /> -->
 <div mat-dialog-content class="content">
-    <input type="checkbox" [(ngModel)]="data.checkBox" (change)="checkValue(isChecked ? 'A' : 'B')" />
+    <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked ? 'A' : 'B')" />
 </div>
 <form [formGroup]="taskForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
