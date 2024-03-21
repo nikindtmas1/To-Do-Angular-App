@@ -30,7 +30,7 @@
         <td mat-cell *matCellDef="let row"> 
           <!-- <input type="text" [value]="isChecked ? 'Checked' : 'Not Checked'" readonly /> -->
 
-          <input  type="checkbox" [(ngModel)]="isChecked">
+          <input  type="checkbox" [(ngModel)]="row.checkBox">
          </td>
       </ng-container>
       <!-- Progress Column -->
