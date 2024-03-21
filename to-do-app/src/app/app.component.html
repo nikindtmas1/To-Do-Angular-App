@@ -28,7 +28,9 @@
       <ng-container matColumnDef="checkbox">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Completed </th>
         <td mat-cell *matCellDef="let row"> 
-          <input  type="checkbox" [(ngModel)]="isChecked" (change)="checkValue">
+          <!-- <input type="text" [value]="isChecked ? 'Checked' : 'Not Checked'" readonly /> -->
+
+          <input  type="checkbox" [(ngModel)]="isChecked">
          </td>
       </ng-container>
       <!-- Progress Column -->
